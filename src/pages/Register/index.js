@@ -3,32 +3,33 @@ import { Link, useHistory } from 'react-router-dom';
 import { FaTwitterSquare } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import './styles.css';
-import logoImg from '../../assets/logo.svg';
+import logoImg from '../../assets/logo.png';
 import api from '../../services/api';
 
 export default function Register() {
-  const [name, setName] = useState('');
+  const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
-  const [whatsapp, setWhatsapp] = useState('');
-  const [city, setCity] = useState('');
-  const [uf, setUf] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [id, setId] = useState('');
 
   const history = useHistory();
   async function handleRegister(e) {
     e.preventDefault();
     const data = {
-      name,
+      nome,
       email,
-      whatsapp,
-      city,
-      uf,
+      telefone,
+      cpf,
+      id,
     };
     try {
-      const response = await api.post('ongs', data);
-      const { id } = response.data;
-      toast.success(`Seu ID de acesso: ${id}`, {
-        background: '#cb2a2d',
-      });
+      const response = await api.post('users', data);
+
+      const { nome: responseName, id: responseID } = response.data;
+      toast.success(
+        `Cadastro Realizado! ${responseName} seu ID de acesso é: ${responseID}`
+      );
       history.push('/');
     } catch {
       toast.error('Erro no Cadastro');
@@ -38,22 +39,20 @@ export default function Register() {
     <div className="register-container">
       <div className="content">
         <section>
-          <img src={logoImg} alt="Be The Hero" />
+          <img src={logoImg} alt="Cadastro" />
           <h1>Cadastro</h1>
-          <p>
-            Faça seu cadastro e ajude as pessoas a encontrarem os casos da sua
-            ONG
-          </p>
+          <p>Faça seu cadastro</p>
+
           <Link to="/" className="backLink">
-            <FaTwitterSquare size={16} color="#cb2a2d" />
+            <FaTwitterSquare size={16} color="#576388" />
             Já tenho cadastro
           </Link>
         </section>
         <form onSubmit={handleRegister}>
           <input
-            placeholder="Nome da Ong"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            placeholder="Digite seu Nome"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
           />
           <input
             type="email"
@@ -62,22 +61,22 @@ export default function Register() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            placeholder="Whatsapp"
-            value={whatsapp}
-            onChange={(e) => setWhatsapp(e.target.value)}
+            placeholder="CPF"
+            value={cpf}
+            onChange={(e) => setCpf(e.target.value)}
           />
 
           <div className="input-group">
             <input
-              placeholder="Cidade"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
+              placeholder="Telefone"
+              value={telefone}
+              onChange={(e) => setTelefone(e.target.value)}
             />
             <input
-              placeholder="UF"
+              placeholder="ID"
               style={{ width: 80 }}
-              value={uf}
-              onChange={(e) => setUf(e.target.value)}
+              value={id}
+              onChange={(e) => setId(e.target.value)}
             />
           </div>
 

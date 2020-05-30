@@ -28,7 +28,7 @@ export default createGlobalStyle`
   form input {
     width: 100%;
     height: 60px;
-    color: #3333;
+    color: #999;
     border: 1px solid #dcdce6;
     border-radius: 8px;
     padding: 0 24px;
@@ -46,7 +46,7 @@ export default createGlobalStyle`
   .button {
     width: 100%;
     height: 60px;
-    background: #cb2a2d;
+    background: #576388;
     border: 0;
     border-radius: 8px;
     color: #FFF;
