@@ -12,11 +12,12 @@ export default function Register() {
   const [cpf, setCpf] = useState('');
   const [telefone, setTelefone] = useState('');
   const [id, setId] = useState('');
-
+  const [vendedor, setVendedor] = useState(false);
   const history = useHistory();
   async function handleRegister(e) {
     e.preventDefault();
     const data = {
+      vendedor,
       nome,
       email,
       telefone,
@@ -79,6 +80,16 @@ export default function Register() {
               onChange={(e) => setId(e.target.value)}
             />
           </div>
+          <select
+            name=""
+            id=""
+            required
+            onChange={(e) => setVendedor(e.target.value)}
+          >
+            <option>Eu Sou Um</option>
+            <option value>Vendedor</option>
+            <option value={false}>Comprador</option>
+          </select>
 
           <button className="button" type="submit">
             Cadastrar

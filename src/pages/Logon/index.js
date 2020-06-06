@@ -17,7 +17,7 @@ export default function Logon() {
       const { nome } = response.data;
       if (response.data) {
         toast.success(`Bem Vindo(a) ${nome}`);
-        localStorage.setItem('UsuarioLogado', nome);
+        localStorage.setItem('UsuarioLogado', JSON.stringify(response.data));
         history.push('/profile');
       }
     } catch {

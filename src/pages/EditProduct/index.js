@@ -1,26 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FiArrowLeft } from 'react-icons/fi';
 import './styles.css';
-import { Form, Input, Textarea } from '@rocketseat/unform';
+import { Form, Input } from '@rocketseat/unform';
 import logoImg from '../../assets/logo.png';
 import api from '../../services/api';
 // import { Container } from './styles';
 
-export default function NewIncident() {
-  const [id, setId] = useState(0);
-  useEffect(() => {
-    async function loadId() {
-      const response = await api.get('/products');
-
-      setId(response.data.length + 1);
-    }
-    loadId();
-  }, [id]);
-
+export default function NewIncident(location) {
+  const [product] = useState(location.location.product || {});
   const history = useHistory();
-  async function handleNewIncident({
+  const { id } = product;
+  async function handleUpdateProduct({
     nomeProduto,
     dataCadastro,
     estadoProduto,
@@ -29,7 +21,7 @@ export default function NewIncident() {
     descricaoProduto,
   }) {
     try {
-      await api.post('/products', {
+      await api.put('/products', {
         id,
         nomeProduto,
         dataCadastro,
@@ -38,7 +30,7 @@ export default function NewIncident() {
         precoProduto,
         cidadeProduto,
       });
-      toast.success('Produto Criado com sucesso!');
+      toast.success('Produto Alterado com sucesso!');
       history.push('/profile');
     } catch {
       toast.error('Favor Verificar os dados!');
@@ -49,14 +41,14 @@ export default function NewIncident() {
       <div className="content">
         <section>
           <img src={logoImg} alt="Be The Hero" />
-          <h1>Cadastrar Novo Produto</h1>
+          <h1>Editar Produto</h1>
           <p>Descreva o produto detalhadamente</p>
           <Link to="/profile" className="backLink">
             <FiArrowLeft size={16} color="#576388" />
             Voltar para Home
           </Link>
         </section>
-        <Form onSubmit={handleNewIncident}>
+        <Form initialData={product} onSubmit={handleUpdateProduct}>
           <Input name="nomeProduto" placeholder="Nome do produto" />
           <Input
             type="date"
@@ -64,12 +56,9 @@ export default function NewIncident() {
             placeholder="Data do Cadastro"
           />
           <Input name="estadoProduto" placeholder="Estado do produto" />
-          <Input
-            name="telefoneContato"
-            placeholder="Seu telefone para Contato"
-          />
+
           <Input name="cidadeProduto" placeholder="Cidade do produto" />
-          <Textarea name="descricaoProduto" placeholder="Descrição" />
+          <Input multiline name="descricaoProduto" placeholder="Descrição" />
           <Input name="precoProduto" placeholder="Valor em Reais R$" />
 
           <button className="button" type="submit">

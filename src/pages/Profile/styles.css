@@ -26,7 +26,7 @@
   margin-top: 0;
 }
 
-.profile-container header button {
+.profile-container header .deleteButton {
   height: 60px;
   width: 60px;
   padding: 20px 20px;
@@ -58,9 +58,15 @@
   position: relative;
 }
 
-.profile-container ul li  button {
+.profile-container ul li  .deleteButton {
   position: absolute;
   right: 24px;
+  top: 25px;
+  border: 0;
+}
+.profile-container ul li  .editButton {
+  position: absolute;
+  right: 60px;
   top: 25px;
   border: 0;
 }
@@ -81,3 +87,40 @@
 .profile-container ul li  p {
   color: #737380;
 }
+
+.valueGroup {
+  padding:  10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-container li .button {
+  color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.profile-container li .button div {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.profile-container li .button div svg {
+  margin-right: 5px;
+}
+
+.profile-container li .button span {
+  font-size: 14px;
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+

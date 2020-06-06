@@ -17,7 +17,7 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
-  input, button, textarea {
+  input, button, textarea, select {
     font: 400 18px Roboto, sans-serif;
   }
 
@@ -41,6 +41,17 @@ export default createGlobalStyle`
     border-radius: 8px;
     padding: 16px 24px;
     line-height: 24px;
+  }
+
+  form select {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    height: 60px;
+    color: #999;
+    border: 1px solid #dcdce6;
+    border-radius: 8px;
+    padding: 0 24px;
   }
 
   .button {
