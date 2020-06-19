@@ -21,6 +21,8 @@ function* addToCart({ id }) {
 
   const amount = currentAmount + 1;
 
+  const { data: imageRequest } = yield call(api.get, `files/${id}`);
+
   if (productExists) {
     localStorage.setItem(
       `Product/${response.data.id}/Amount`,
@@ -30,13 +32,14 @@ function* addToCart({ id }) {
         userID: user.id,
       })
     );
-    yield put(updateAmountSucess(id, amount));
+    yield put(updateAmountSucess(id, amount, imageRequest));
   } else {
     const data = {
       ...response.data,
       amount: 1,
       priceFormatted: formatPrice(response.data.price),
       userID: user.id,
+      imageRequest,
     };
     localStorage.setItem(
       `Product/${response.data.id}/Amount`,

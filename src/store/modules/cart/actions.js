@@ -26,10 +26,11 @@ export function updateAmountRequest(id, amount) {
   };
 }
 
-export function updateAmountSucess(id, amount) {
+export function updateAmountSucess(id, amount, image) {
   return {
     type: '@cart/UPDATE_AMOUNT_SUCESS',
     id,
     amount,
+    image,
   };
 }

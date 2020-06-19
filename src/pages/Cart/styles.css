@@ -1,6 +1,6 @@
-.new-incident-container {
+.cart-container {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1420px;
   height: 100vh;
   margin: 0 auto;
 
@@ -8,49 +8,82 @@
   align-items: center;
   justify-content: center;
 }
-.new-incident-container .content {
+.cart-container .content {
   width: 100%;
   padding: 96px;
   background: #f0f0f5;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.new-incident-container .content section {
+.cart-container .content section {
   width: 100%;
   max-width: 380px;
 }
 
-.new-incident-container .content section h1{
+.cart-container .content section h1{
   margin: 64px 0 32px;
   font-size: 32px;
 }
 
-.new-incident-container .content section p{
+.cart-container .content section p{
   font-size: 18px;
   color: #737380;
   line-height: 32px;
 }
+.cart-container .card-container-list{
+  margin-left: 40px;
+  display: block;
+  flex: 1;
+  padding: 30px;
+  background: rgba(255, 251, 251, 0.658);
+  border-radius: 8px;
+}
 
-.new-incident-container .content form{
+.card {
+  height: 100px;
   width: 100%;
-  max-width: 450px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
 }
 
-.new-incident-container .content input,
-.new-incident-container .content textarea{
-  margin-top: 2px;
+.card img {
+  height: 100px;
 }
 
-.new-incident-container .content form .input-group{
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.card-container {
+
+  padding: 2px 16px;
+}
+
+footer {
+  margin-top: 30px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.new-incident-container .content form .input-group input + input{
-  margin-left: 4px;
+ .buyButton {
+  background: #7159c1;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background 0.2s;
 }
 
+footer button:hover {
+  background:  #7159c11a;
+}
 

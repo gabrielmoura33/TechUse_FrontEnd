@@ -123,7 +123,18 @@ export default function Profile() {
                 </button>
               </>
             ) : (
-              <div />
+              <button
+                onClick={() =>
+                  history.push({
+                    pathname: '/incidents/show',
+                    product: i,
+                  })
+                }
+                className="deleteButton"
+                type="button"
+              >
+                <FiEdit size={20} color="#a8a8b3" />
+              </button>
             )}
           </li>
         ))}

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Logon from './pages/Logon';
 import Profile from './pages/Profile';
 import NewIncident from './pages/NewIncident';
+import SeeIncident from './pages/SeeIncident';
 import EditProduct from './pages/EditProduct';
 import Register from './pages/Register';
 import Cart from './pages/Cart';
@@ -16,6 +17,7 @@ export default function Routes() {
         <Route path="/register" component={Register} />
         <Route path="/profile" component={Profile} />
         <Route path="/incidents/new" component={NewIncident} />
+        <Route path="/incidents/show" component={SeeIncident} />
         <Route path="/incidents/edit" component={EditProduct} />
         <Route path="/cart" component={Cart} />
       </Switch>

@@ -25,7 +25,7 @@ export default function NewIncident(location) {
     if (product.file_id !== null) {
       loadImage();
     }
-  }, [preview, product.file_id]);
+  }, [preview]);
   const history = useHistory();
   const { id } = product;
   async function handleUpdateProduct({
@@ -45,7 +45,6 @@ export default function NewIncident(location) {
         descricaoProduto,
         precoProduto,
         cidadeProduto,
-        file_id: product.file_id,
       });
       toast.success('Produto Alterado com sucesso!');
       history.push('/profile');
@@ -58,29 +57,38 @@ export default function NewIncident(location) {
       <div className="content">
         <section>
           <img src={preview || logoImg} alt="Be The Hero" />
-          <h1>Editar Produto</h1>
-          <p>Descreva o produto detalhadamente</p>
+          <h1>{product.nomeProduto}</h1>
           <Link to="/profile" className="backLink">
             <FiArrowLeft size={16} color="#576388" />
             Voltar para Home
           </Link>
         </section>
         <Form initialData={product} onSubmit={handleUpdateProduct}>
-          <Input name="nomeProduto" placeholder="Nome do produto" />
+          <Input disabled name="nomeProduto" placeholder="Nome do produto" />
           <Input
+            disabled
             type="date"
             name="dataCadastro"
             placeholder="Data do Cadastro"
           />
-          <Input name="estadoProduto" placeholder="Estado do produto" />
+          <Input
+            disabled
+            name="estadoProduto"
+            placeholder="Estado do produto"
+          />
 
-          <Input name="cidadeProduto" placeholder="Cidade do produto" />
-          <Input multiline name="descricaoProduto" placeholder="Descrição" />
-          <Input name="precoProduto" placeholder="Valor em Reais R$" />
-
-          <button className="button" type="submit">
-            Cadastrar
-          </button>
+          <Input
+            disabled
+            name="cidadeProduto"
+            placeholder="Cidade do produto"
+          />
+          <Input
+            disabled
+            multiline
+            name="descricaoProduto"
+            placeholder="Descrição"
+          />
+          <Input disabled name="precoProduto" placeholder="Valor em Reais R$" />
         </Form>
       </div>
     </div>
