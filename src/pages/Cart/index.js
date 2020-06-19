@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/jsx-no-comment-textnodes */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -9,15 +9,18 @@ import {
   MdAddCircleOutline,
   MdDelete,
 } from 'react-icons/md';
-import { toast } from 'react-toastify';
 import { FiArrowLeft } from 'react-icons/fi';
 import './styles.css';
 import logoImg from '../../assets/logo.png';
 import { formatPrice } from '../../util/format';
 import { ProductTable, Total } from './stylesComponents';
 import * as CartActions from '../../store/modules/cart/actions';
+import CartAnimation from '../../components/CartAnimation';
 
-export default function Cart(location) {
+export default function Cart() {
+  const [sucess, setSucess] = useState(false);
+  const history = useHistory();
+
   const cart = useSelector((state) =>
     state.cart.map((product) => ({
       ...product,
@@ -43,8 +46,15 @@ export default function Cart(location) {
   function decrease(product) {
     dispatch(CartActions.updateAmountRequest(product.id, product.amount - 1));
   }
+  function handleSubmit() {
+    setSucess(true);
+    setTimeout(() => {
+      history.push('/incidents/sucess');
+    }, 1540);
+  }
   return (
     <div className="cart-container">
+      <CartAnimation visible={sucess} />
       <div className="content">
         <section>
           <img src={logoImg} alt="Be The Hero" />
@@ -108,6 +118,13 @@ export default function Cart(location) {
                 <span>TOTAL</span>
                 <strong>{total}</strong>
               </Total>
+              <button
+                className="submitButton"
+                onClick={handleSubmit}
+                type="button"
+              >
+                Finalizar Pedido
+              </button>
             </footer>
           </ProductTable>
         </div>

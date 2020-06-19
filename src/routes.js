@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import NewIncident from './pages/NewIncident';
 import SeeIncident from './pages/SeeIncident';
 import EditProduct from './pages/EditProduct';
+import SucessIncident from './pages/SucessIncident';
 import Register from './pages/Register';
 import Cart from './pages/Cart';
 
@@ -19,6 +20,8 @@ export default function Routes() {
         <Route path="/incidents/new" component={NewIncident} />
         <Route path="/incidents/show" component={SeeIncident} />
         <Route path="/incidents/edit" component={EditProduct} />
+        <Route path="/incidents/sucess" component={SucessIncident} />
+
         <Route path="/cart" component={Cart} />
       </Switch>
     </BrowserRouter>

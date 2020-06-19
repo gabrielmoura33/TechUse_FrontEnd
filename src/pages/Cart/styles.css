@@ -71,7 +71,10 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
-
+.submitButton {
+  width: 100%;
+  margin-left: 100%;
+}
  .buyButton {
   background: #7159c1;
   color: #fff;
