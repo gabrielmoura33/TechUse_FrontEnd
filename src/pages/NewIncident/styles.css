@@ -35,6 +35,12 @@
   line-height: 32px;
 }
 
+.new-incident-container .content section img{
+  max-width: 400px;
+  max-height: 400px;
+  border-radius: 20px;
+}
+
 .new-incident-container .content form{
   width: 100%;
   max-width: 450px;

@@ -59,7 +59,7 @@ export default function Profile() {
             Cadastrar novo produto
           </Link>
         ) : (
-          <Link className="button" to="/incidents/new">
+          <Link className="button" to="/cart">
             Minhas Compras
           </Link>
         )}

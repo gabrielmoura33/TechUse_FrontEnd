@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FiArrowLeft } from 'react-icons/fi';
@@ -10,6 +10,22 @@ import api from '../../services/api';
 
 export default function NewIncident(location) {
   const [product] = useState(location.location.product || {});
+  const [preview, setPreview] = useState();
+
+  useEffect(() => {
+    async function loadImage() {
+      try {
+        const response = await api.get(`/files/${product.file_id}`);
+        setPreview(response.data);
+        toast.info('Carregando Imagem');
+      } catch {
+        toast.error('Erro ao carregar imagem');
+      }
+    }
+    if (product.file_id !== null) {
+      loadImage();
+    }
+  }, [preview]);
   const history = useHistory();
   const { id } = product;
   async function handleUpdateProduct({
@@ -40,7 +56,7 @@ export default function NewIncident(location) {
     <div className="new-incident-container">
       <div className="content">
         <section>
-          <img src={logoImg} alt="Be The Hero" />
+          <img src={preview || logoImg} alt="Be The Hero" />
           <h1>Editar Produto</h1>
           <p>Descreva o produto detalhadamente</p>
           <Link to="/profile" className="backLink">
